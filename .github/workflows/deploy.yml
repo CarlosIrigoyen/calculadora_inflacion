@@ -2,6 +2,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['main']
+  workflow_dispatch:
 permissions:
   contents: read
   pages: write
@@ -19,7 +20,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4   # ← Cambiado de v3 a v4
         with:
           path: './dist'
       - id: deployment
